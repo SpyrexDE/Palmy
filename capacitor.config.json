@@ -1,0 +1,8 @@
+{
+  "appId": "com.palmy",
+  "appName": "Palmy",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "windowsAndroidStudioPath": "C:\\Program Files\\Android\\Android Studio\\bin\\studio64.exe",
+  "linuxAndroidStudioPath": "/usr/local/android-studio/bin/studio.sh"
+}
