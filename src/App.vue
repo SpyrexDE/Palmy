@@ -29,6 +29,11 @@ export default {
 
 <style>
 
+* {
+  color:azure;
+  -webkit-tap-highlight-color: transparent;
+}
+
 html,
 body,
 main {
@@ -43,7 +48,6 @@ body {
   background: #2c3e50;
   color: gainsboro;
   margin: 0;
-  overflow: hidden;
 }
 
 ion-header {
@@ -52,10 +56,22 @@ ion-header {
 
 ion-title {
   font-size: 30px;
+  background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(168, 168, 168));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .fullHeight {
   height: 100%;
+}
+
+.centerAll{
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 main {
@@ -78,6 +94,14 @@ main > * {
 
 main > :first-child {
   z-index: 1; /* Prevent flickering on first frame when transition classes not added yet */
+}
+
+
+
+div {
+  height: 100%;
+  width: 100%;
+  display: table;
 }
 
 
