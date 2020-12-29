@@ -29,6 +29,9 @@
 
                             <ion-button v-if="!loading" fill="outline" id="loginBtn" @click="login">Login</ion-button>
                             <ion-button v-else fill="outline" id="loginBtn"><ion-spinner name="dots"></ion-spinner></ion-button>
+                            <br>
+                            <ion-text class="errorMsg">{{ err1 }}</ion-text>
+                        
                         </ion-card>
                         <ion-card>
 
@@ -43,6 +46,8 @@
                             <br>
                             <ion-button v-if="!aLoading" fill="outline" id="loginBtn" @click="signInAnonymously">Login anonymously</ion-button>
                             <ion-button v-else fill="outline" id="loginBtn"><ion-spinner name="dots"></ion-spinner></ion-button>
+                            <br>
+                            <ion-text class="errorMsg">{{ err2 }}</ion-text>
                         </ion-card>
                     </div>
                 </div>
@@ -62,22 +67,38 @@ export default {
             loading: false,
             email: '',
             password: '',
+            err1: '',
+            err2: '',
         }
     },
     methods: {
-        signInAnonymously: function(){
+        signInAnonymously: async function(){
             this.aLoading = true;
-            auth.signInAnonymously().then(()=>{
+            try{
+            await auth.signInAnonymously().then(()=>{
                 this.$router.push({name:'home'});
                 this.aLoading = false;
             });
+            }catch(error){
+                this.aLoading = false;
+                this.err2 = error.message;
+            }
         },
-        login: function(){
+        login: async function(){
             this.loading = true;
-            auth.signInWithEmailAndPassword(this.email, this.password).then(()=>{
-                this.$router.push({name:'home'});
+            try{
+            await auth.signInWithEmailAndPassword(this.email, this.password).then(()=>{
+                if(!auth.currentUser.emailVerified){
+                    throw new Error("Please verify your E-Mail first");
+                }else{
+                    this.$router.push({name:'home'});
+                }
                 this.loading = false;
             });
+            }catch(error){
+                this.loading = false;
+                this.err1 = error.message;
+            }
         },
     }
 }
@@ -101,11 +122,17 @@ ion-card {
     margin: auto;
     margin-bottom: 20px;
     padding-top: 25px;
+    padding-bottom: 14px;
 }
 
 #loginBtn {
     margin: 25px;
+    margin-bottom: 11px;
     color: var(--ion-color-primary);
+}
+
+.errorMsg{
+    color: var(--ion-color-danger);
 }
 
 </style>

@@ -24,6 +24,9 @@
 
                             <ion-button v-if="!loading" fill="outline" id="registerBtn" @click="register">Register</ion-button>
                             <ion-button v-else fill="outline" id="registerBtn"><ion-spinner name="dots"></ion-spinner></ion-button>
+                            <br>
+                            <ion-text class="errorMsg">{{ err }}</ion-text>
+                            <ion-text class="successMsg">{{ suc }}</ion-text>
                         </ion-card>
                     </div>
                 </div>
@@ -43,20 +46,28 @@ export default {
             loggedIn: false,
             email: '',
             password: '',
+            err: '',
+            suc: '',
         }
     },
     methods: {
-        register: function(){
-            auth.createUserWithEmailAndPassword(this.email, this.password).then(()=>{
-                this.login()
-            });
+        register: async function(){
             this.loading = true;
-        },
-        login: function(){
-            auth.signInWithEmailAndPassword(this.email, this.password).then(()=>{
-                this.$router.push({name:'home'});
+            try{
+                await auth.createUserWithEmailAndPassword(this.email, this.password);
+                
+                // now we have access to the signed in user
+                const user = auth.currentUser;
+                // send the signed in user a verification email
+                await user.sendEmailVerification();
+            
+                this.suc = "Please check your inbox for an validation E-Mail";
+
+            } catch(error) {
                 this.loading = false;
-            });
+                this.err = error.message;
+            }
+            this.loading = false;
         },
     }
 }
@@ -80,11 +91,20 @@ ion-card {
     margin: auto;
     margin-bottom: 20px;
     padding-top: 25px;
+    padding-bottom: 14px;
 }
 
 #registerBtn {
     margin: 25px;
     color: var(--ion-color-primary);
+}
+
+.errorMsg{
+    color: var(--ion-color-danger);
+}
+
+.successMsg{
+    color: var(--ion-color-success);
 }
 
 </style>
