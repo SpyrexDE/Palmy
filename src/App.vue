@@ -62,6 +62,10 @@ ion-title {
   -webkit-text-fill-color: transparent;
 }
 
+ion-card {
+    --background: #21222C !important;
+}
+
 .fullHeight {
   height: 100%;
 }
@@ -95,7 +99,6 @@ main > * {
 main > :first-child {
   z-index: 1; /* Prevent flickering on first frame when transition classes not added yet */
 }
-
 
 
 div {

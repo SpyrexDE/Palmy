@@ -22,15 +22,16 @@
                 <div id="loginContainer">
                     <div id="loginPanel">
                         <ion-card>
-                            <div class="row">
+
                                 <ion-icon name="person" style="color: #a9a9a9a9; height: 32px; width: 32px;"></ion-icon>
-                                <ion-input placeholder="E-Mail"></ion-input>
-                                <ion-input placeholder="Password"></ion-input>
-                            </div>
-                            <ion-button fill="outline" id="loginBtn">Login</ion-button>
+                                <ion-input @ionInput="email=$event.target.value;" placeholder="E-Mail"></ion-input>
+                                <ion-input @ionInput="password=$event.target.value;" placeholder="Password" formControlName="password" type="password"></ion-input>
+
+                            <ion-button v-if="!loading" fill="outline" id="loginBtn" @click="login">Login</ion-button>
+                            <ion-button v-else fill="outline" id="loginBtn"><ion-spinner name="dots"></ion-spinner></ion-button>
                         </ion-card>
                         <ion-card>
-                            <div class="row">
+
                                 <ion-text style="color: darkgray;">
                                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                     width="32" height="32"
@@ -39,7 +40,7 @@
                                     <br>
                                     You also can login using an anonymous account.
                                 </ion-text>
-                            </div>
+                            <br>
                             <ion-button v-if="!aLoading" fill="outline" id="loginBtn" @click="signInAnonymously">Login anonymously</ion-button>
                             <ion-button v-else fill="outline" id="loginBtn"><ion-spinner name="dots"></ion-spinner></ion-button>
                         </ion-card>
@@ -58,16 +59,25 @@ export default {
     data() {
         return {
             aLoading: false,
-            loggedIn: false,
+            loading: false,
+            email: '',
+            password: '',
         }
     },
     methods: {
         signInAnonymously: function(){
+            this.aLoading = true;
             auth.signInAnonymously().then(()=>{
                 this.$router.push({name:'home'});
                 this.aLoading = false;
             });
-        this.aLoading = true;
+        },
+        login: function(){
+            this.loading = true;
+            auth.signInWithEmailAndPassword(this.email, this.password).then(()=>{
+                this.$router.push({name:'home'});
+                this.loading = false;
+            });
         },
     }
 }
@@ -76,9 +86,9 @@ export default {
 <style scoped>
 
 #loginPanel {
-    display: table-cell;
     vertical-align: middle;
     margin: auto;
+    margin-top: 50px;
 }
 
 #loginContainer {
@@ -87,16 +97,15 @@ export default {
 }
 
 ion-card {
-     --background: #21222C;
+    max-width: 450px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding-top: 25px;
 }
 
 #loginBtn {
     margin: 25px;
     color: var(--ion-color-primary);
-}
-
-.row{
-    margin-top: 25px;
 }
 
 </style>

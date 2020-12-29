@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style scoped>
-    h1 {
+  h1 {
     margin-bottom: 0;
   }
   h3 {
