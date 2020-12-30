@@ -3,7 +3,7 @@
     <ion-content>
         <div id="outer">
           <div id="titles">
-            <h1>EASY ONLINE TEXT EDITOR</h1>
+            <h1>THE OPEN SOURCE SOCIAL MEDIA</h1>
             <h3 class="scramble">NO LOGIN REQUIRED</h3>
           </div>
         </div>
@@ -22,7 +22,9 @@ export default {
       [
           'No registration',
           '100% free',
-          'Save your docs',
+          'Share your thoughts',
+          'Share your code',
+          'Get famous',
           'Easy to use',
           'Easy to master',
           'Open Source',
@@ -49,5 +51,8 @@ export default {
   #outer {
     min-height: 300px;
     height: 60%;
+  }
+  .scramble {
+    height: 25px;
   }
 </style>

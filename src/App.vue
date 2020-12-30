@@ -60,7 +60,20 @@ ion-title {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
+
+ion-button {
+	z-index: 100;
+}
+
 
 ion-card {
     --background: #21222C !important;

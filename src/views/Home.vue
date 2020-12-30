@@ -2,11 +2,14 @@
   <div>
     <User #user="{ user }">
       <ion-header>
-        <ion-toolbar color="primary">
+        <ion-toolbar color="primary" >
 
           <ion-buttons slot="start" v-if="user">
             <router-link tag="ion-button" fill="outline" to="profile" style="color: var(--ion-color-success);" shape="round">
-                <ion-icon name="person" color="var(--ion-color-success);"></ion-icon> Profile
+                <ion-icon name="person" color="var(--ion-color-success);"></ion-icon>
+            </router-link>
+            <router-link tag="ion-button" fill="outline" to="chatrooms" style="color: azure;" shape="round">
+                <ion-icon name="chatbubble-ellipses-outline" color="azure"></ion-icon>
             </router-link>
           </ion-buttons>
 
@@ -44,7 +47,7 @@ export default {
   components: {
     User,
     auth,
-    HomePage
+    HomePage,
   },
   data() {
     return {
@@ -55,7 +58,9 @@ export default {
 </script>
 
 <style scoped>
-
+ion-button {
+  margin-left: 10px;
+}
 </style>
 
 <style>
