@@ -147,3 +147,16 @@
 
   --ion-tab-bar-background: #1f1f1f;
 }
+
+
+/*CUSTOM CSS*/
+
+.palmyLink {
+  transition: 0.2s;
+  margin-left: 30px;
+  text-decoration: none;
+}
+.palmyLink:hover {
+  transition: 0.2s;
+  color: var(--ion-color-primary);
+}

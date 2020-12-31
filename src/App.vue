@@ -75,8 +75,9 @@ ion-button {
 }
 
 
-ion-card {
+ion-card, ion-list, ion-item {
     --background: #21222C !important;
+    background: #21222C !important;
 }
 
 .fullHeight {

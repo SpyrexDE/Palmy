@@ -27,7 +27,6 @@
     "@vue/composition-api": "^1.0.0-beta.22",
     "firebase": "^8.2.1",
     "ionic": "^4.12.0",
-    "ionicons": "^4.6.3",
     "vue": "^2.6.12",
     "vue-animejs": "^2.1.1",
     "vue-loading-overlay": "^3.4.2",

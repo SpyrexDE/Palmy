@@ -67,6 +67,29 @@ export default new Router({
       meta: {
         page: 2
       }
+    },
+    {
+      path: '/chatrooms',
+      name: 'chatrooms',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: function () { 
+        return import(/* webpackChunkName: "about" */ './views/Chatrooms.vue')
+      },
+      meta: {
+        page: 4
+      }
+    },
+    {
+      name: 'chat',
+      path: '/chats/:id',
+      component: function () { 
+        return import(/* webpackChunkName: "about" */ './views/ChatRoom.vue')
+      },
+      meta: {
+        page: 5
+      }
     }
   ]
 })

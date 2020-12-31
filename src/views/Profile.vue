@@ -76,7 +76,7 @@ export default {
 <style scoped>
 
 ion-card{
-    max-width: 450px;
+    max-width: 500px;
     margin: auto;
     margin-top: 40px;
     padding-top: 25px;
@@ -88,7 +88,7 @@ ion-grid {
 }
 
 ion-col{
-    max-width: 35%;
+    max-width: 30%;
 }
 
 .propField {
