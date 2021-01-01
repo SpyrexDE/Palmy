@@ -9,6 +9,7 @@
     "build": "npx capacitor open",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
+    "PUBLISH": "npm run build || firebase deploy",
     "init": "npx capacitor add",
     "postinit": "rm -rf dist",
     "postinstall": "electron-builder install-app-deps",

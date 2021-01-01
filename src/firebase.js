@@ -5,7 +5,7 @@ import 'firebase/storage';
 
 const firebaseConfig = { 
     apiKey: "AIzaSyB9VXoYlKfZDDY2XIiT21HQoSgoW1p8ruo",
-    authDomain: "palmy-project.firebaseapp.com",
+    authDomain: "palmy-project.web.app",
     projectId: "palmy-project",
     storageBucket: "palmy-project.appspot.com",
     messagingSenderId: "695650405053",

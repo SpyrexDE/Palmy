@@ -26,6 +26,7 @@
                                             <ChatMessage 
                                                 :message="message" 
                                                 :owner="user.uid === message.sender"
+                                                :username="user.displayName"
                                             />
                                         </ion-item>
                                     </ion-list>

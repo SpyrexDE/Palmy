@@ -1,7 +1,7 @@
 <template>
   <div class="message" :class="{ 'from-user': owner }">
 
-    <span class="sender" :class="{ 'from-user': owner }">{{owner.displayName || "Anonymous"}}</span>
+    <span class="sender" :class="{ 'from-user': owner }">{{username || "Anonymous"}}</span>
     <br />
     {{ message.text }}
 
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    props: ['message', 'owner']
+    props: ['message', 'owner', 'username']
 };
 </script>
 <style>
