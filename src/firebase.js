@@ -4,13 +4,13 @@ import 'firebase/auth';
 import 'firebase/storage';
 
 const firebaseConfig = { 
-    apiKey: "AIzaSyCP34UsOU1DC-PMQARsA99RBNondKfENuQ",
-    authDomain: "palmy-store.firebaseapp.com",
-    projectId: "palmy-store",
-    storageBucket: "palmy-store.appspot.com",
-    messagingSenderId: "427420282515",
-    appId: "1:427420282515:web:43b2d90002fc5c686b6766",
-    measurementId: "G-4CSBXESX6D"
+    apiKey: "AIzaSyB9VXoYlKfZDDY2XIiT21HQoSgoW1p8ruo",
+    authDomain: "palmy-project.firebaseapp.com",
+    projectId: "palmy-project",
+    storageBucket: "palmy-project.appspot.com",
+    messagingSenderId: "695650405053",
+    appId: "1:695650405053:web:8b3c28c718162ace3005d4",
+    measurementId: "G-DJDYJ08ECL"
 };
 
 firebase.initializeApp(firebaseConfig);

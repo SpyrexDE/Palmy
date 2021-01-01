@@ -19,13 +19,14 @@
                         <ion-card>
 
                                 <ion-icon name="person" style="color: #a9a9a9a9; height: 32px; width: 32px;"></ion-icon>
+                                <ion-input @ionInput="newDisplayName=$event.target.value;" placeholder="Username"></ion-input>
                                 <ion-input @ionInput="email=$event.target.value;" placeholder="E-Mail"></ion-input>
                                 <ion-input @ionInput="password=$event.target.value;" placeholder="Password" formControlName="password" type="password"></ion-input>
 
                             <ion-button v-if="!loading" fill="outline" id="registerBtn" @click="register">Register</ion-button>
                             <ion-button v-else fill="outline" id="registerBtn"><ion-spinner name="dots"></ion-spinner></ion-button>
                             <br>
-                            <ion-text class="errorMsg">{{ err }}</ion-text>
+                            <ion-text class="errorMsg" v-if="!suc">{{ err }}</ion-text>
                             <ion-text class="successMsg">{{ suc }}</ion-text>
                         </ion-card>
                     </div>
@@ -44,6 +45,7 @@ export default {
         return {
             loading: false,
             loggedIn: false,
+            newDisplayName: '',
             email: '',
             password: '',
             err: '',
@@ -52,6 +54,7 @@ export default {
     },
     methods: {
         register: async function(){
+            var vm = this;
             this.loading = true;
             try{
                 await auth.createUserWithEmailAndPassword(this.email, this.password);
@@ -62,6 +65,17 @@ export default {
                 await user.sendEmailVerification();
             
                 this.suc = "Please check your inbox for an validation E-Mail";
+
+                // set username
+                await auth.onAuthStateChanged((user) => {
+                                if (user) {
+                                    user.updateProfile({
+
+                                        displayName: vm.newDisplayName,
+                                    
+                                    });
+                                }
+                });
 
             } catch(error) {
                 this.loading = false;

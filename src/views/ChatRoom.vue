@@ -33,7 +33,7 @@
                         </div>
 
                         <div>
-                            <ion-input id="messageInput" @ionInput="newMessageText=$event.target.value;" placeholder="Message"></ion-input>
+                            <ion-input id="messageInput" :disabled="loading" @ionInput="newMessageText=$event.target.value;" placeholder="Message"></ion-input>
                             <ion-button shape="round" :disabled="!newMessageText || loading" fill="outline" @click="addMessage(user.uid)" style="color: var(--ion-color-primary);"><ion-icon v-if="!loading" name="paper-plane-outline" color="primary"></ion-icon><ion-spinner v-else name="dots"></ion-spinner></ion-button>
                         </div>
                     </ion-card>
@@ -110,7 +110,7 @@ ion-content {
     width: 98%;
 }
 ion-card {
-    max-height: 70%;
+    min-height: 550px;
     max-width: 800px;
     margin: auto;
     margin-top: 40px;

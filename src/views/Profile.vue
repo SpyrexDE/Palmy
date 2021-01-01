@@ -70,6 +70,9 @@ export default {
     components: {
         User,
     },
+    mounted() {
+        console.log(this.$refs);
+    },
 }
 </script>
 

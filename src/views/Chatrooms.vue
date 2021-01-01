@@ -42,7 +42,7 @@ ion-card{
     margin-top: 40px;
     padding-top: 25px;
     padding-bottom: 25px;
-    max-height: 70%;
+    min-height: 470px;
 }
 
 ion-grid {

@@ -23,6 +23,9 @@ export default {
   padding: 5px;
   width: auto;
   word-break: break-word;
+  border-width: 1px;
+  border-color: #253d52;
+  border-style: solid;
 }
 .from-user {
   margin-right: 10px;
