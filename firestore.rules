@@ -1,0 +1,13 @@
+rules_version = '2';
+service firebase.storage {
+  match /databases/{database}/documents {
+    // Matches any document in collection and subcollections
+    match /{path=**} {
+      allow read, write: if isLoggedIn();
+    }
+  }
+
+  function isLoggedIn() {
+    return request.auth!=null;
+  }
+}
